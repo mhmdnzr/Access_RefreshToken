@@ -68,7 +68,7 @@ The audience of this repository is people who just started asp.net web Api.
 
 ## Screenshots
 
-![App Screenshot](./SepandPayMMSApis/Screenshot.png)
+![App Screenshot](./AccessToken/Screenshot.png)
 
 
 
