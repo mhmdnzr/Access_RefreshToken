@@ -10,7 +10,7 @@ WORKDIR /src
 COPY ["AccessToken/AccessToken.csproj", "AccessToken/"]
 RUN dotnet restore "AccessToken/AccessToken.csproj"
 COPY . .
-WORKDIR "/src/SepandPayMMSApis"
+WORKDIR "/src/AccessToken"
 RUN dotnet build "AccessToken.csproj" -c Release -o /app/build
 
 FROM build AS publish
