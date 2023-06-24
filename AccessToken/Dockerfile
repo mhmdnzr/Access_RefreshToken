@@ -7,16 +7,16 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
-COPY ["SepandPayMMSApis/SepandPayMMSApis.csproj", "SepandPayMMSApis/"]
-RUN dotnet restore "SepandPayMMSApis/SepandPayMMSApis.csproj"
+COPY ["AccessToken/AccessToken.csproj", "AccessToken/"]
+RUN dotnet restore "AccessToken/AccessToken.csproj"
 COPY . .
 WORKDIR "/src/SepandPayMMSApis"
-RUN dotnet build "SepandPayMMSApis.csproj" -c Release -o /app/build
+RUN dotnet build "AccessToken.csproj" -c Release -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "SepandPayMMSApis.csproj" -c Release -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "AccessToken.csproj" -c Release -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "SepandPayMMSApis.dll"]
+ENTRYPOINT ["dotnet", "AccessToken.dll"]
